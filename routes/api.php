@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\User;
+use App\Model\Question;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::apiResource('/question','QuestionController');
+
+Route::get('/test/{id}',function($id){
+   
+    $question = Question::findorfail($id);
+    echo $question->user->name;
+   
+});
+Route::get('/user/{id}',function($id){
+
+    $user = User::findorfail($id);
+    echo $user->name;
 });
