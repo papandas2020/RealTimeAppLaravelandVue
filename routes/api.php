@@ -17,15 +17,25 @@ use App\Model\Question;
 */
 
 Route::apiResource('/question','QuestionController');
+Route::apiResource('/category','CategoryController');
+Route::apiResource('/question/{question}/reply','ReplyController');
 
-Route::get('/test/{id}',function($id){
-   
-    $question = Question::findorfail($id);
-    echo $question->user->name;
-   
-});
-Route::get('/user/{id}',function($id){
 
-    $user = User::findorfail($id);
-    echo $user->name;
+Route::get('/test',function(){
+
+    $papan = "iam papan das";
+    return Str::slug($papan);
 });
+
+
+// Route::get('/test/{id}',function($id){
+   
+//     $question = Question::findorfail($id);
+//     echo $question->category->name;
+   
+// });
+// Route::get('/user/{id}',function($id){
+
+//     $user = User::findorfail($id);
+//     echo $user->name;
+// });
